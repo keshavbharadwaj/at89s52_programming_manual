@@ -1,0 +1,8 @@
+	MOV A, R0	; move values in R0 to A
+	ADD A,R1	; add values of R11 and values in A
+	JC TEXT		; if sum is greater than FFh then CY=1 (Carry Flag)
+	SJMP EXIT	; if CY=0 then exit
+TEXT:	MOV A, #'Y'	; if CY=1 move 'Y' in to A
+	MOV P1, A	; send output via Port-1 
+EXIT:	NOP		; No Operation
+	END		; Terminate

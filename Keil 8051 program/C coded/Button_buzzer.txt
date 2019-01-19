@@ -1,0 +1,22 @@
+#inlcude<reg52.h>
+
+sbit in = P1^1
+sbit out = P1^2
+
+void delay(unsigned char z)
+{
+	unsigned int m,n;
+	for(m=0;m<z;m++)
+		for(n=0;n<1275;n++);
+}
+
+void main(void)
+{
+	while(in==0)
+	{
+		out=1;
+		delay(250);
+		out=0;
+		delay(250);
+	}
+}

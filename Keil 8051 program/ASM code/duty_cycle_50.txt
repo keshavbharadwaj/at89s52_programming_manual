@@ -1,0 +1,12 @@
+BACK:	CPL P1.0	; Complement the value in p1.0
+	LCALL DELAY	; call delay subroutine
+	SJMP BACK	; run in infinite loop
+
+DELAY: 
+	MOV R3, #19	; 1
+HERE:  	MOV R4, #255	; 1
+LOOP: 	DJNZ R4, LOOP	; 2
+ 	DJNZ R3, HERE	; 2
+        RET		; 2
+
+	

@@ -1,0 +1,11 @@
+#include<reg51.h>
+void delay();
+void main()
+{	unsigned int i;
+	unsigned int wavelength[16]={ 127,176,218,245,255,245,218,176,128,79,27,10,0,10,37,79 };
+	while(1)
+	{	for(i=0;i<16;i++)
+		{	P1=wavelength[i];
+		}
+	}
+}

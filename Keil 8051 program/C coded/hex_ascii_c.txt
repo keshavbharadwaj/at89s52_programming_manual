@@ -1,0 +1,8 @@
+#include <reg52.h>     					// reg51.h for 8051, reg52.h for AT89S52
+void main (void)
+{
+	unsigned char a[]= “0123456789ABCDEF”;
+	unsigned char z;
+	for(z=0;z<10;z++)
+		P1=a[z];
+}

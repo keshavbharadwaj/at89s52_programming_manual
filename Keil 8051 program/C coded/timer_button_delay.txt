@@ -1,0 +1,41 @@
+#include<reg52.h>
+
+sbit led=P2^0; 			// led pin
+sbit button=P1^2;		// switch pin
+
+
+
+void delay(unsigned char y)
+{
+	TMOD=0x10;
+	if(y==1)
+	{
+	TL1=0xFE;
+	TH1=0xA5;   
+	}		// this will give 500ms delay
+	else
+	{
+		TL1=0xFE;
+		TH1=0x55;
+	}		//this will give 250ms delay
+	
+	TR1=1;
+	while(TF1==0);
+	TR1=0;
+	TF1=0;
+}
+
+
+void main(void)
+{
+	
+	//button=1;
+	while(1)
+	{
+		led ^= 0x01;
+		if(button==0)
+			delay(0);
+		else
+			delay(1);
+	}
+}

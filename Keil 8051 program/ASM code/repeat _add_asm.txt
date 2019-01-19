@@ -1,0 +1,5 @@
+MOV A, #0	; Initialize with 0
+MOV R1, #10	; loop counter is 10
+LOOP:   ADD A, #12	; adding 12 each iteration
+DJNZ R1, LOOP	; decrement and jump if non zero
+MOV R7, A	; move the answer in B to R7.

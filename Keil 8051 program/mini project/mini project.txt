@@ -1,0 +1,142 @@
+#include<reg52.h>
+void password();
+void wait();
+void output();
+void delay(int x);
+sbit error=P2^7;
+sbit pass0=P2^1;
+sbit pass1=P2^2;
+sbit pass2=P2^3;
+sbit pass3=P2^4;
+sbit out1=P1^7;
+sbit out2=P2^6;
+sbit out3=P3^6;
+sbit out4=P3^7;
+char seven[10]={0x00,0x02,0x04,0x06,0x08,0x0a,0x0c,0x0e,0x10,0x12};
+void main()
+{	int p=9,k=5;
+	 error=0;
+	out1=0;
+	out2=0;
+	out3=0;
+	out4=0;
+	 password();
+		P3=seven[6];
+	  P1=seven[0];
+	  delay(100);
+	  P3=seven[5];
+	while(1)
+	{
+		for(p=9;p>=0;p--)
+		{	P1=seven[p];
+			delay(100);
+		
+			}
+	k=k-1;
+			if(k==-1)
+			{
+					output();
+				
+			}
+	P3=seven[k];
+		
+			
+		}
+}
+void password()
+{	while(1)
+ {
+	 if(pass1==pass0==pass2==pass3==1)
+	 {	wait();
+	if(pass2==0&&pass1==pass0==pass3==1)
+	 {	wait();
+		 if(pass1==0&&pass0==pass3==1)
+		 {	wait();
+			 if(pass3==0&&pass0==1)
+			 {	wait();
+				 if(pass0==0)
+				 { error=1;
+					 return;
+				 }
+					
+			 }
+			 		
+		 }
+		 		
+	 }
+ }
+
+
+
+ /* if(pass0==pass1==1)
+	 {	wait();
+		 if(pass1==0&&pass0==1)
+		 {	wait();
+			 if(pass0==0)
+			 {
+		 error=1;
+		 return;
+		 }
+	 }
+ }*/
+ 
+ 
+}
+}
+
+
+void wait()
+{	int passwait0=pass0;
+	int passwait1=pass1;
+	int passwait2=pass2;
+	int passwait3=pass3;
+	while(passwait0==pass0&&passwait1==pass1&&passwait2==pass2&&passwait3==pass3)
+	{
+	}
+	
+}
+void delay(int x)
+{	if(x==0)
+	{return;
+	}
+	TMOD=0x10;
+	TL1=0xff;
+	TH1=0xdb;
+	TR1=1;
+	while(TF1==0);
+	TR1=0;
+	TF1=0;
+	delay(x-1);
+	
+}
+void output()
+{	while(1)
+	{
+	out1=1;
+	delay(10);
+	out3=1;
+	delay(10);
+	out2=1;
+	delay(10);
+	out4=1;
+	delay(10);
+	out1=0;
+	delay(10);
+	out3=0;
+	delay(10);
+	out2=0;
+	delay(10);	
+	out4=0;
+	delay(5);
+	out1=1;
+	out2=1;
+	out3=1;
+	out4=1;
+	delay(5);
+	out1=0;
+	out2=0;
+	out3=0;
+	out4=0;
+	delay(5);
+	}
+}

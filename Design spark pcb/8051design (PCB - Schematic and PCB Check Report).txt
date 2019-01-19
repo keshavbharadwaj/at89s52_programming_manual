@@ -1,0 +1,34 @@
+Schematic and PCB Check Report
+------------------------------
+
+Report Written:     Friday, January 18, 2019
+Design Path:        C:\Users\S vaid\Desktop\8051design.pcb
+Design Title:       
+Created:            1/18/2019 3:30:49 PM
+Last Saved:         1/18/2019 3:42:39 PM
+Editing Time:       12 min
+Units:              thou (precision 0)
+
+
+Checking integrity of Schematic "C:\Users\S vaid\Desktop\8051design.sch" with PCB "C:\Users\S vaid\Desktop\8051design.pcb"
+==========================================================================================================================
+
+The PCB and Schematic designs do not match.
+To bring them into line, you will need to make the following changes to the PCB design:
+
+Disconnect Pin U1-20 from Net "N0071"
+Disconnect Pin C1-1 from Net "N0071"
+Disconnect Pin C2-1 from Net "N0071"
+Disconnect Pin powersupply-2 from Net "N0071"
+Disconnect Pin R1-1 from Net "N0071"
+
+Add Net "N0006"
+
+Connect Pin U1-20 to Net "N0006"
+Connect Pin C1-1 to Net "N0006"
+Connect Pin C2-1 to Net "N0006"
+Connect Pin powersupply-2 to Net "N0006"
+Connect Pin R1-1 to Net "N0006"
+
+
+End Of Report.

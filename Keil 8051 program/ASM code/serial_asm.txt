@@ -1,0 +1,6 @@
+	MOV R0, #08	; counter value 8
+	SETB P0.0	; make P0.0 as input
+LOOP:	MOV C,P0.0	; move data from P0.0 to Carry bit
+	RRC A		; right rotate with carry
+	DJNZ R0, LOOP	; repeat until all 8 bits are moved
+	MOV P1, A 	; transfer in a parallel format

@@ -1,0 +1,14 @@
+#include<reg52.h>
+
+sbit x = P1^2;				//sbit to declare port 
+void main(void)
+{
+	x=1;     			//make x as input
+	while(1)
+	{
+		if(x==0)		// active low input
+			P2=0x01;
+		else
+			P2=0x00;
+	}
+}

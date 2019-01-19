@@ -1,0 +1,26 @@
+#include<reg52.h>
+
+sbit sq=P2^0;
+unsigned int x;
+
+void timer0() interrupt 1
+{
+	sq=~sq;
+}
+
+void timer1() interrupt 3
+{
+	P1=P1+1;
+}
+
+void main()
+{
+		
+	TMOD=0x42;
+	TH0=0x12;		// 8 bit interval
+	IE=0x86;
+	TR0=1;
+	TR1=1;	
+	while(1);			// till interrupt is rised
+}
+	

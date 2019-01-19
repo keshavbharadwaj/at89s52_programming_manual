@@ -1,0 +1,23 @@
+#include<reg52.h>
+
+sbit freq=P3^5;		// switch pin
+
+void main(void)
+{
+	freq=1;
+	TMOD=0x61;
+	TH1=0;
+	
+	
+	while(1)
+	{
+		do
+		{
+			TR1=1;
+			P1=TL1;
+		}
+		while(TF1==0);
+		TR1=0;
+		TF1=0;
+	}
+}

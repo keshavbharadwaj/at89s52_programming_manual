@@ -1,0 +1,13 @@
+#include<reg52.h>
+
+void main(main)
+{
+	unsigned int z;
+	while(1)			// Run Always, can also use for(;;)
+	{
+		P1=0x02;
+		for(z=0;z<50000;z++);	// Delay count
+		P1=0x00;
+		for(z=0;z<50000;z++);
+	}
+}

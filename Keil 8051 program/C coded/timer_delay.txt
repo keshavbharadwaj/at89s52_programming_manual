@@ -1,0 +1,23 @@
+#include<reg52.h>
+
+void delay(void)
+{
+	TMOD=0x10;
+	TL1=0xFE;
+	TH1=0xA5;        // this will give 500ms delay
+	TR1=1;
+	while(TF1==0);
+	TR1=0;
+	TF1=0;
+}
+
+void main(void)
+{
+	unsigned int x;
+	while(1)
+	{
+		P0 =P0 ^ 0x01;
+		for(x=0;x<20;x++)
+			delay();
+	}
+}
