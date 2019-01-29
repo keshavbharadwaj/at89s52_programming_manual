@@ -1,0 +1,103 @@
+C51 COMPILER V9.56.0.0   PASS                                                              01/29/2019 23:52:11 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE PASS
+OBJECT MODULE PLACED IN .\Objects\pass.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE pass.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\pass
+                    -.lst) TABS(2) OBJECT(.\Objects\pass.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include<string.h>
+   3          char a;
+   4          char k[10]="bobby";
+   5          char b[10];
+   6          sbit m=P2^1;
+   7          sbit n=P2^2;
+   8          
+   9          void x(char v)
+  10          {
+  11   1         SBUF=v;
+  12   1            while(!TI);
+  13   1            TI=0;
+  14   1            
+  15   1      }
+  16          void write(char *p)
+  17            { while(*p)
+  18   1          {x(*p);
+  19   2            p++;
+  20   2          }
+  21   1          x(0x0d);
+  22   1        }
+  23          void recieve()
+  24          { 
+  25   1        int j=0;
+  26   1        write("enter the password");
+  27   1        while(SBUF!='\r')
+  28   1        { while(RI==0);
+  29   2          RI=0;
+  30   2          if(SBUF!='\r')
+  31   2          { b[j]=SBUF;
+  32   3            j++;  
+  33   3          }
+  34   2      
+  35   2        }
+  36   1      }
+  37          void password()
+  38          {while(1)
+  39   1        { 
+  40   2          recieve();
+  41   2        if(strcmp(b,k)==0)
+  42   2          {write("password correct");
+  43   3            return;
+  44   3          }
+  45   2          write("password incorrect");
+  46   2          write(b);
+  47   2          write(k);
+  48   2      
+  49   2        
+  50   2        }
+  51   1          
+  52   1      }
+  53          void main()
+  54          { volatile char c;
+C51 COMPILER V9.56.0.0   PASS                                                              01/29/2019 23:52:11 PAGE 2   
+
+  55   1        
+  56   1        TMOD=0x20;
+  57   1        SCON=0x50;
+  58   1        TH1=0xfd;
+  59   1        TR1=1;
+  60   1        write("begin");
+  61   1        password();
+  62   1          while(1)
+  63   1        {
+  64   2          while(RI==0);
+  65   2          c=SBUF;
+  66   2          RI=0;
+  67   2          if(c=='A')
+  68   2            m=1;
+  69   2          else if(c=='B')
+  70   2            m=0;
+  71   2          else if(c=='C')
+  72   2            n=1;
+  73   2          else if(c=='D')
+  74   2            n=0;
+  75   2        }
+  76   1      } 
+  77              
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    198    ----
+   CONSTANT SIZE    =     61    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     21       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
